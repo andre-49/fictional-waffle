@@ -1,9 +1,15 @@
-import { StrictMode } from 'react'
+import { createContext, StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-
+import Information from './components/Information';
+export const context = createContext();
 function App() {
-  return <div className='text-blue-900 text-5xl text-center'>Boilerplate;</div>
+  const [toggle,setToggle] = useState(true)
+  return (
+    <context.Provider value={{toggle,setToggle}}>
+    < Information />
+    </context.Provider>
+)
 }
 
 createRoot(document.getElementById('root')).render(
